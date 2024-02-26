@@ -1,0 +1,44 @@
+//
+//genel bilgiler
+//
+indicator(
+    title, // İndikatörün başlığı. Eğer shorttitle belirtilmemişse, bu başlık ekranda gösterilir.
+    shorttitle, // İndikatörün başlığının kısaltması. Eğer belirtilmemişse, başlık kullanılır.
+    overlay, // true ise, indikatör grafikte gösterilir; false ise ayrı bir panelde gösterilir. (varsayılan: false)
+    format, // Grafik üzerinde çizilecek göstergenin biçimini belirler.
+            // Olası değerler: format.inherit, format.price, format.volume, format.percent
+            // format.inherit --> mevcut grafiğin biçimini kullanır (varsayılan)
+            // format.price --> gösterge fiyatlarını çizmek için mevcut fiyat biçimini kullanır
+            // format.volume --> hacim verilerini grafiğin alt bölümünde bir histogram olarak gösterir 
+            //                   bu, fiyat hareketleriyle hacim arasındaki ilişkiyi daha net bir şekilde görmeyi sağlar
+            // format.percent --> göstergeyi yüzdelik olarak gösterir
+    precision, // Görüntülenen değerlerin kayan noktadan sonraki basamak sayısını belirtir.
+               // En fazla 16 olmalıdır.
+    scale, // Gösterge grafiğinin yerleştirileceği yeri belirler.
+           // scale.right --> Göstergeyi grafiğin sağ kenarına yerleştirir.
+           // scale.left --> Göstergeyi grafiğin sol kenarına yerleştirir.
+           // scale.none --> Göstergeyi bağımsız bir ölçekte çizer. (sadece overlay=true ile birlikte kullanılabilir)
+    max_bars_back, // Göstergeyi hesaplarken kullanılan maksimum bar sayısını belirtir.
+                   // Bu parametre, yalnızca otomatik algılama başarısız olduğunda gereklidir.
+    timeframe, // Göstergenin belirli bir zaman diliminden verileri hesaplamasını ifade eder.
+               // timeframe.period --> TradingView'in zaman dilimi değişkenlerine bağlıdır.
+               // timeframe.tostring --> Zaman dilimini bir dize olarak döndürür (5m, 1h, 1D, 1W, 1M gibi).
+               // timeframe.isintraday --> Zaman dilimi bir günün altındaysa 'true', aksi halde 'false' döndürür.
+               // timeframe.isdaily --> Zaman dilimi günlükse 'true', aksi halde 'false' döndürür.
+               // timeframe.isweekly --> Zaman dilimi haftalıksa 'true', aksi halde 'false' döndürür.
+               // timeframe.ismonthly --> Zaman dilimi aylıksa 'true', aksi halde 'false' döndürür.
+    timeframe_gaps, // Timeframe grafikten daha yüksekse, gösterge değerlerinin nasıl gösterileceğini belirtir.
+                    // true --> Timeframe grafikten daha yüksekse 'na' değeri döndürür (yani bir boşluk oluşur).
+                    // false --> 'na' değerinden kaçınır ve en son değeri tekrar döndürür.
+    explicit_plot_zorder, // Komut dosyasında çizilen göstergelerin, dolguların ve yatay çizgilerin çizim sırasını belirtir.
+                           // true --> Komut dosyasındaki sırayla çizilir (plot(), hline, fill işlemleri için gerekli).
+                           // false --> Çizimlerin sırası otomatik olarak belirlenir (varsayılan).
+    max_lines_count, // Grafikte gösterilecek çizgi sayısını belirtir. 0-500 arasında bir değer olmalıdır.
+                     // Varsayılan değer 50'dir. Çok çizgi olduğunda grafiğin gözükmesi zorlaşabilir.
+    max_labels_count, // Grafikte gösterilecek etiket (label) sayısını belirtir. 0-500 arasında bir değer olmalıdır.
+                      // Varsayılan değer 50'dir.
+    max_boxes_count, // Grafikte gösterilecek kutu (box) sayısını belirtir. 0-500 arasında bir değer olmalıdır.
+                     // Varsayılan değer 50'dir.
+    max_polylines_count // Grafikte gösterilecek çokgen (polyline) sayısını belirtir. 0-100 arasında bir değer olmalıdır.
+                        // Varsayılan değer 50'dir.
+)
