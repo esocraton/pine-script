@@ -1,6 +1,9 @@
 //
 //genel bilgiler
 //
+//
+//indikatör fonksiyonu
+//
 indicator(
     title, // İndikatörün başlığı. Eğer shorttitle belirtilmemişse, bu başlık ekranda gösterilir.
     shorttitle, // İndikatörün başlığının kısaltması. Eğer belirtilmemişse, başlık kullanılır.
@@ -41,4 +44,54 @@ indicator(
                      // Varsayılan değer 50'dir.
     max_polylines_count // Grafikte gösterilecek çokgen (polyline) sayısını belirtir. 0-100 arasında bir değer olmalıdır.
                         // Varsayılan değer 50'dir.
+)
+//
+//
+//strateji fonksiyonu
+//
+strategy(
+        title, // Stratejinin başlığı. Eğer shorttitle belirtilmemişse, bu başlık ekranda gösterilir.
+        shorttitle, // Stratejinin başlığının kısaltması. Eğer belirtilmemişse, başlık kullanılır.
+        overlay, // true ise, strateji grafikte gösterilir; false ise ayrı bir panelde gösterilir. (varsayılan: false)
+        format, // Stratejiye ait emirlerin nasıl görüntüleneceğini ve yürütüleceğini belirtir.
+                // Olası değerler: format.inherit, format.price, format.volume, format.percent
+                // format.inherit --> Stratejinin emirlerinin, grafikteki mevcut biçimlendirme ayarlarına göre görüneceğini belirtir.
+                // format.price --> Stratejinin fiyatları çizmek için mevcut fiyat biçimini kullanacağını ifade eder.
+                // format.volume --> Fiyat hareketleriyle hacim arasındaki ilişkinin daha net görülmesi için grafiğin altında hacim histogramı açar.
+                // format.percent --> Stratejinin göstergesini yüzdelik olarak gösterir.
+        precision, // Görüntülenen değerlerin kayan noktadan sonraki basamak sayısını belirtir.
+                   // En fazla 16 olmalıdır.
+        scale, // Stratejinin gösterge grafiğinin yerleştirileceği yeri belirler.
+           // scale.right --> Göstergeyi grafiğin sağ kenarına yerleştirir.
+           // scale.left --> Göstergeyi grafiğin sol kenarına yerleştirir.
+           // scale.none --> Göstergeyi bağımsız bir ölçekte çizer. (sadece overlay=true ile birlikte kullanılabilir)
+        pyramiding, // Stratejinin aynı anda birden fazla pozisyon açmasına ve böylece potansiyel karı artırmasına olanak tanır. Varsayılan = 0.
+        calc_on_order_fills, // Bir emir doldurulduktan sonra stratejinin yeniden hesaplanıp hesaplanmamasını belirler.
+                             // true --> Yalnızca çubuk kapandığında değil emir doldurulduğunda stratejiyi tekrar hesaplar.
+                             // false --> Varsayılandır. Sadece çubuk kapandığında hesaplama yapar. (varsayılan)
+        calc_on_every_tick, // Stratejinin her gerçke zamanlı işarette yeniden hesaplanıp hesaplanmayacağını belirler.
+                            // true --> Strateji gerçek zamanlı bir çubuk üzerinde çalışırken, her grafik güncellemesinde yeniden hesaplar.
+                            // false --> Strateji yalnızca gerçek zamanlı çubuk kapandığında hesaplama yapar. (varsayılan)
+                            // Bir nüans: Değişken, geçmiş verilerin üzerindeki strateji hesaplamasını etkilemez.
+        max_bars_back,
+        backtest_fill_limits_assumption, 
+        default_qty_type, 
+        default_qty_value, 
+        initial_capital, 
+        currency, 
+        slippage, 
+        commission_type, 
+        commission_value, 
+        process_orders_on_close, 
+        close_entries_rule, 
+        margin_long, 
+        margin_short, 
+        explicit_plot_zorder, 
+        max_lines_count, 
+        max_labels_count, 
+        max_boxes_count, 
+        risk_free_rate, 
+        use_bar_magnifier, 
+        fill_orders_on_standard_ohlc, 
+        max_polylines_count
 )
