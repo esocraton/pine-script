@@ -73,19 +73,31 @@ strategy(
                             // true --> Strateji gerçek zamanlı bir çubuk üzerinde çalışırken, her grafik güncellemesinde yeniden hesaplar.
                             // false --> Strateji yalnızca gerçek zamanlı çubuk kapandığında hesaplama yapar. (varsayılan)
                             // Bir nüans: Değişken, geçmiş verilerin üzerindeki strateji hesaplamasını etkilemez.
-        max_bars_back,
-        backtest_fill_limits_assumption, 
-        default_qty_type, 
-        default_qty_value, 
-        initial_capital, 
-        currency, 
-        slippage, 
-        commission_type, 
-        commission_value, 
-        process_orders_on_close, 
-        close_entries_rule, 
-        margin_long, 
-        margin_short, 
+        max_bars_back, // Stratejinin geçmişteki kaç barı analiz edeceğini belirler.
+        backtest_fill_limits_assumption, // İki değer alabilir:
+                                        // FillLimits.AllBars --> Geri test sürecinde her zaman tüm çubukların dikkate alınmasını sağlar.
+                                        // FillLimits.OncePerBar --> Geri test sürecinde her çubuk için sadece bir kere doldurma işlemi yapar.
+                                                                // Böylece bar üzerindeki tüm hesaplamalar yapılmaz ama işlem hızlanır.
+        default_qty_type, // qty = Quantity (miktar, adet) anlamına geliyor. Bu parametre iki farklı değere sahip olabilir:
+                        // QtyType.Cash --> Stratejinin işlem yaparken kullanacağı miktarı, hesapta bulunan toplam miktara olarak belirler.
+                        // QtyType.Percent --> Stratejinin işlem yaparken kullanacağı miktarı, hesaptaki normal sermayenin belli bir yüzdesine göre belirler.
+        default_qty_value, // Stratejinin işlem yaparken kullanacağı varsayılan miktarı belirlemek için kullanılır.
+        initial_capital, // Stratejinin geçmişe dönük analizindeki başlangıç sermayesini belirler.
+        currency, // Stratejinin geçmişe dönük analizinde kullanılacak para birimini belirler.
+        slippage, // Slippage stratejinin öngördüğü grafikle mevcut grafik arasındaki kaymayı ifade eder.
+        commission_type, // Komisyon miktarını veya oranını belirler. Şu iki değerden birine sahip olabilir:
+                        // CommissionType.Percent --> Komisyonu işlem değerinin belli bir yüzdesi olarak hesaplar.
+                        // ComissionType.Cash --> Komisyonu sabit bir ücret olarak belirler.
+        commission_value, // Komisyonun miktarını belirler. Eğer CommissionType.Percent ise yüzdesini, ComissionType.Value ise miktarını belirler.
+        process_orders_on_close, // Bu işlemin bar kapanışında mı yoksa direkt mi gerçekleşeceğini belirten boolean bir değerdir:
+                                // true --> İşlem emirlerinin bar kapanışında gerçekleşmesini sağlar.
+                                // false --> işlem emirleri için bar kapanışını beklemeyip direkt gerçekleşmesini sağlar.
+        close_entries_rule, // Açık pozisyonların kapatılması için bir kural belirler ve şu değerlere sahip olabilir:
+                        // CloseEntriesRule.AllPositionsAtLimit --> Tüm açık pozisyonların belli bir fiyat limitinde kapatılmasını sağlar.
+                        // CloseEntriesRule.AllPositionsAtMarket --> Tüm açık pozisyonların piyasa fiyatında anlık olarak kapatılmasını sağlar.
+                        // CloseEntriesRule.PerEntry --> Tüm açık pozisyonların belli bir fiyat limitinde veya piyasa fiyatında kapatılmasını sağlar.
+        margin_long, // Uzun pozisyonlar için gerekli olan marj (fon) miktarını belirler.
+        margin_short, // Kısa pozisyonlar için gerekli olan marj (fon) miktarını belirler.
         explicit_plot_zorder, 
         max_lines_count, 
         max_labels_count, 
